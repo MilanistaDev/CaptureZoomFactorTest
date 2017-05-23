@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         }
         // If videoMaxZoomFactor is 1.0, substitute 1.0. Otherwise substitute 2.0.
         // videoMaxZoomFactor が 1.0 の場合は 1.0 を代入，それ以外は2.0をセット
-        self.captureDevice.videoZoomFactor = (self.captureDevice.activeFormat.videoMaxZoomFactor == 1.0) ? 1.0 : 2.0
+        self.captureDevice.videoZoomFactor = min(self.captureDevice.activeFormat.videoMaxZoomFactor, 2.0)
         self.currentScaleLabel.text = "current: " + self.captureDevice.videoZoomFactor.description
 
         self.captureDevice.unlockForConfiguration()
